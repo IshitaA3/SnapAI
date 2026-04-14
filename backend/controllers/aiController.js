@@ -2,7 +2,8 @@ import OpenAI from "openai";
 import { clerkClient } from "@clerk/express";
 import axios from "axios";
 import {v2 as cloudinary} from 'cloudinary'
-import { PDFParse } from "pdf-parse";
+import pdfParse from "pdf-parse/lib/pdf-parse.js";
+import fs from "fs";
 import Creation from "../models/creations.js";
 
 const openai = new OpenAI({
@@ -261,8 +262,11 @@ export const resumeReview = async (req, res) => {
             return res.json({success: false, message: 'Resume file size should not exceed 5MB.'})
         }
 
-        const parser = new PDFParse({ url: resume.path });
-        const result = await parser.getText();
+        // const parser = new PDFParse({ url: resume.path });
+        // const result = await parser.getText();
+
+        const dataBuffer = fs.readFileSync(resume.path);
+        const result = await pdfParse(dataBuffer);
 
         const prompt = `Review the following resume and provide constructive feedback based on its strengths, weaknesses and areas of improvement. Resume Content:\n\n${result.text}`
 
