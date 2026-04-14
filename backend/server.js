@@ -22,14 +22,9 @@ app.use(requireAuth())
 app.use('/api/ai', aiRouter)
 app.use('/api/user', userRouter)
 
-const PORT = process.env.PORT
-
 main()
-.then(() => {
-    console.log('Connected to DB')
-    app.listen(PORT, () => {
-        console.log('Server is running on Port', PORT)
-    })  
-})
+.then(() => console.log('Connected to DB'))
 .catch(err => console.log((err))
 )
+
+export default app;
