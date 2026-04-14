@@ -1,5 +1,4 @@
 # Snap.AI ✨
-[![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/IshitaA3/SnapAI)
 
 🌐 **Live Preview**: [https://snap-ai-beta.vercel.app/](https://snap-ai-beta.vercel.app/)
 
